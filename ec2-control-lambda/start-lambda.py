@@ -26,15 +26,9 @@ def lambda_handler(event, context):
             # 조건에 따라 필터링
             if "Tags" in instance:
                 tags = {tag["Key"]: tag["Value"] for tag in instance["Tags"]}
-                # 유형 필터링
-                if instance["InstanceType"] == "t3.small":
-                    target_instances.append(instance["InstanceId"])
                 # 태그 필터링
-                # if tags.get('Active') == 'Office-Hours':
-                #     target_instances.append(instance['InstanceId'])
-                # 이름 필터링
-                # if tags.get('Name') == 'nxt-test':
-                #     target_instances.append(instance['InstanceId'])
+                if tags.get('owner') == 'YOUR-IAM-USER-NAME':
+                   target_instances.append(instance['InstanceId'])
 
     if target_instances:
         ec2.start_instances(InstanceIds=target_instances)
