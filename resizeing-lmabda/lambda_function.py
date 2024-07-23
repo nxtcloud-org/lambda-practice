@@ -46,5 +46,5 @@ zip -r Lambda_function.zip .
 
 # 코드 업로드 이후 Add layer
 """
-ARN 지정 → arn:aws:lambda:us-west-2:770693421928:layer:Klayers-p312-Pillow:2
+ARN 지정 → arn:aws:lambda:ap-northeast-2:770693421928:layer:Klayers-p312-Pillow:2
 """
