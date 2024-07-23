@@ -18,6 +18,10 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         source_bucket = record["s3"]["bucket"]["name"]
         key = unquote_plus(record["s3"]["object"]["key"])
+
+        print(f"소스 이미지 버킷 이름 : {source_bucket}")
+        print(f"소스 이미지 파일 이름 : {key}")
+        
         tmpkey = key.replace("/", "")
         download_path = f"/tmp/{uuid.uuid4()}{tmpkey}"
         upload_path = f"/tmp/resized-{tmpkey}"
@@ -25,6 +29,7 @@ def lambda_handler(event, context):
         resize_image(download_path, upload_path)
         target_bucket = "리사이즈된 파일을 저장할 버킷 이름을 작성해주세요."
         s3_client.upload_file(upload_path, target_bucket, f"resized-{key}")
+        print(f"resized-{key} 파일 {target_bucket}에 업로드 완료")
 
 
 # 패키지 폴더 생성 후 필요 패키지 설치
