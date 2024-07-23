@@ -52,4 +52,5 @@ zip -r Lambda_function.zip .
 # 코드 업로드 이후 Add layer
 """
 ARN 지정 → arn:aws:lambda:ap-northeast-2:770693421928:layer:Klayers-p312-Pillow:2
+참고 : https://github.com/keithrozario/Klayers/tree/master/deployments/python3.12
 """
